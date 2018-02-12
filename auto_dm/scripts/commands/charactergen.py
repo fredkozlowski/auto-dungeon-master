@@ -1,41 +1,48 @@
 import click
-from ..classes import npc
+from ..classes import character, npc
 
 
 @click.group()
-def npc():
+def npcgroup():
     """Manages NPCs"""
 
-@npc.command()
-@click.option('--manual', default = False, help='Manually create an NPC')
-def create(manual):
+@npcgroup.command()
+@click.option('--sblock', is_flag = True, help='Give the NPC a stat block')
+def create(sblock):
 	"""Creates a new NPC"""
 	click.echo('Creating an NPC')
-	npc_type = click.prompt('NPC type ', type=bool)
 	name = click.prompt('Name ', type=str)
 	race = click.prompt('Race ', type=str)
-	test = NPC(name, race)
-	print(test)
+	phys_feature = click.prompt('Physical feature ', type=str)
+	archetype = click.prompt('Archetype ', type=str)
+	location = click.prompt('Location ', type=str)
+	if(sblock):
+		statblock = click.prompt('Stat block ', type=str)
+		temp_npc = npc(name, race, phys_feature, archetype, location, statblock)
+	else:
+		temp_npc = npc(name, race, phys_feature, archetype, location)
+	click.echo(temp_npc.__str__)
 		
-@npc.command()
+@npcgroup.command()
 def generate():
 	"""Randomly generates a new NPC"""
 	click.echo('Generating an NPC')
+	
 	
 @click.group()
 def pc():
     """Manages heroes"""
 
 @pc.command()
-@click.option('--manual', default = False, help='Manually create an NPC')
+@click.option('--manual', default = False, help='Manually create a player character')
 def create(manual):
-	"""Creates a new heroes"""
+	"""Creates a new player character"""
 	click.echo('Creating a hero')
 	npc_type = click.prompt('NPC type ', type=bool)
 	name = click.prompt('Name ', type=str)
 	race = click.prompt('Race ', type=str)
-	test = NPC(name, race)
-	print(test)
+	temp_pc = npc(name, race)
+	print(temp_pc)
 		
 @pc.command()
 def generate():

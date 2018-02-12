@@ -9,5 +9,5 @@ def cli():
     Lorem Ipsum
     """
     
-cli.add_command(charactergen.npc)
+cli.add_command(charactergen.npcgroup)
 cli.add_command(charactergen.pc)
