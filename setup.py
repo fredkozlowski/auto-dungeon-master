@@ -10,6 +10,6 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        cli=auto_dm.scripts.cli:dnd
+        dnd=auto_dm.scripts.dnd:cli
     ''',
 )
