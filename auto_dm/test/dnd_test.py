@@ -1,6 +1,6 @@
 import click
 from click.testing import CliRunner
-from scripts.dnd import cli
+from auto_dm.scripts.dnd import cli
 
 
 def test_command_dnd():
