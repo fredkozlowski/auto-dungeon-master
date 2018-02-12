@@ -1,6 +1,5 @@
 import click
-from .commands import npcgen
-from .commands import pcgen
+from .commands import charactergen
 
 
 @click.group()
@@ -10,5 +9,5 @@ def cli():
     Lorem Ipsum
     """
     
-cli.add_command(npcgen.npc)
-cli.add_command(pcgen.pc)
+cli.add_command(charactergen.npc)
+cli.add_command(charactergen.pc)
